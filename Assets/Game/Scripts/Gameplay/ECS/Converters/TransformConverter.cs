@@ -1,5 +1,4 @@
 ﻿using Game.Scripts.Gameplay.ECS.Common;
-using Game.Scripts.Gameplay.ECS.MoveTowards.Components;
 using Leopotam.Ecs;
 using UnityEngine;
 using Voody.UniLeo;

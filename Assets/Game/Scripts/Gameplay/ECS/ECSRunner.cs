@@ -1,11 +1,12 @@
 ﻿using System;
 using Core.Scripts.Loggers;
 using Game.Scripts.Gameplay.ECS.Common;
+using Game.Scripts.Gameplay.ECS.Crouch;
+using Game.Scripts.Gameplay.ECS.Crouch.Systems;
 using Game.Scripts.Gameplay.ECS.Input;
 using Game.Scripts.Gameplay.ECS.Jump;
 using Game.Scripts.Gameplay.ECS.MouseRotate;
-using Game.Scripts.Gameplay.ECS.MoveTowards;
-using Game.Scripts.Gameplay.ECS.PlayerChange;
+using Game.Scripts.Gameplay.ECS.Move;
 using Game.Scripts.Gameplay.ECS.Rigidbody;
 using Game.Scripts.Gameplay.ECS.SendMessage;
 using Game.Scripts.Gameplay.ECS.Spawn;
@@ -38,11 +39,12 @@ namespace Game.Scripts.Gameplay.ECS
       _systems
         .Add(new InputFeature())
         .Add(new MouseRotateFeature())
-        .Add(new PlayerChangeFeature())
         .Add(new SpawnFeature())
-        .Add(new MoveTowardsFeature())
+        .Add(new CrouchFeature())
+        .Add(new MoveFeature())
         .Add(new JumpFeature())
         .Add(new SendMessageFeature())
+        .OneFrame<PlayerChangeEvent>()
         .OneFrame<OnCollisionStayEvent>()
         .OneFrame<OnCollisionExitEvent>()
         .Inject(mainCamera)

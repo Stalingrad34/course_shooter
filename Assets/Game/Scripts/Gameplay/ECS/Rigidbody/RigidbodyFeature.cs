@@ -13,7 +13,6 @@ namespace Game.Scripts.Gameplay.ECS.Rigidbody
     {
       _systems = new EcsSystems(_world);
       _systems
-        .Add(new AxisMoveVelocitySystem())
         .Add(new MouseAngularVelocitySystem())
         .Add(new MoveVelocitySystem())
         .Add(new AngularVelocitySystem())

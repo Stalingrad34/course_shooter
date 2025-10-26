@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using Game.Scripts.Gameplay.Data.Units;
 
 namespace Game.Scripts.Gameplay.ECS.Common
 {
   public struct AnimatorComponent
   {
-    public Animator Animator;
+    public UnitAnimator UnitAnimator;
   }
 }

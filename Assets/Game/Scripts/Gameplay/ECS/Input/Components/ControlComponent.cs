@@ -7,5 +7,6 @@
     public float MouseHorizontal;
     public float MouseVertical;
     public bool SpaceKeyDown;
+    public bool CtrlKeyDown;
   }
 }

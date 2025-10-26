@@ -36,6 +36,7 @@ namespace Game.Scripts.Infrastructure.States
         ref var spawnEvent = ref WorldHandler.GetWorld().NewEntity().Get<SpawnEnemyEvent>();
         spawnEvent.Id = key;
         spawnEvent.Position = new Vector3(player.pX, player.pY, player.pZ);
+        spawnEvent.Player = player;
       }
     }
 

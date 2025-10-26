@@ -12,8 +12,12 @@ namespace Game.Scripts.Gameplay.ECS.MouseRotate
     {
       _systems = new EcsSystems(_world);
       _systems
-        .Add(new MouseHorizontalSystem())
-        .Add(new MouseVerticalSystem())
+        .Add(new ChangesHorizontalRotateSystem())
+        .Add(new ChangesVerticalRotateSystem())
+        .Add(new MouseHorizontalRotateSystem())
+        .Add(new MouseVerticalRotateSystem())
+        .Add(new LerpHorizontalRotateSystem())
+        .Add(new LerpVerticalRotateSystem())
         .Init();
     }
 

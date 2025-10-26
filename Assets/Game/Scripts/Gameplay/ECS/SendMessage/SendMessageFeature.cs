@@ -12,7 +12,10 @@ namespace Game.Scripts.Gameplay.ECS.SendMessage
     {
       _systems = new EcsSystems(_world);
       _systems
+        .Add(new SendRotateDataSystem())
         .Add(new SendMoveSystem())
+        .Add(new SendCrouchSystem())
+        .Add(new SendMessageSystem())
         .Init();
     }
 

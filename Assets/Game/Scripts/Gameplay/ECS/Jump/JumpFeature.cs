@@ -16,6 +16,7 @@ namespace Game.Scripts.Gameplay.ECS.Jump
         .Add(new OutGroundSystem())
         .Add(new CheckSphereGroundSystem())
         .Add(new KeyJumpSystem())
+        .Add(new JumpAnimationSystem())
         .Init();
     }
 

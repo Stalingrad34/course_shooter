@@ -9,8 +9,8 @@ namespace Game.Scripts.Gameplay.ECS.Input.Systems
     
     public void Run()
     {
-      var horizontal = UnityEngine.Input.GetAxis("Horizontal");
-      var vertical = UnityEngine.Input.GetAxis("Vertical");
+      var horizontal = UnityEngine.Input.GetAxisRaw("Horizontal");
+      var vertical = UnityEngine.Input.GetAxisRaw("Vertical");
       
       foreach (var i in _filter)
       {

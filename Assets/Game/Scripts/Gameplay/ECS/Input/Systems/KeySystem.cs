@@ -13,6 +13,7 @@ namespace Game.Scripts.Gameplay.ECS.Input.Systems
       foreach (var i in _filter)
       {
         _filter.Get1(i).SpaceKeyDown = UnityEngine.Input.GetKeyDown(KeyCode.Space);
+        _filter.Get1(i).CtrlKeyDown = UnityEngine.Input.GetKey(KeyCode.LeftControl);
       }
     }
   }

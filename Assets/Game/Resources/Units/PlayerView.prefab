@@ -43,9 +43,11 @@ GameObject:
   - component: {fileID: 2614275576894188568}
   - component: {fileID: 1248241891198770844}
   - component: {fileID: 5328463601267745021}
+  - component: {fileID: 1254655707669221088}
   - component: {fileID: 1146052041495301102}
-  - component: {fileID: 6116190557118322995}
   - component: {fileID: 4757747788620334226}
+  - component: {fileID: 6116190557118322995}
+  - component: {fileID: 3070906909227649291}
   - component: {fileID: 6301963252231812440}
   - component: {fileID: 8461252633859581211}
   - component: {fileID: 1978254035599286756}
@@ -54,6 +56,7 @@ GameObject:
   - component: {fileID: 3919500621520533809}
   - component: {fileID: 710776493308858289}
   - component: {fileID: 8148842584438284294}
+  - component: {fileID: 5660760831503281948}
   m_Layer: 0
   m_Name: PlayerView
   m_TagString: Untagged
@@ -141,6 +144,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.Data.Units.PlayerView
   entityConverter: {fileID: 1146052041495301102}
   cameraPoint: {fileID: 6876047678335402818}
+--- !u!114 &1254655707669221088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500311980659525006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca3483c5666147e9b2e47b660d1c3679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.Data.Units.UnitAnimator
+  footAnimator: {fileID: 5585877807821241491}
 --- !u!114 &1146052041495301102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,18 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Leopotam.Ecs::Voody.UniLeo.ConvertToEntity
   convertMode: 0
---- !u!114 &6116190557118322995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6500311980659525006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee8b8541b5e049dd8eed67786b9b34ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.ControlConverter
 --- !u!114 &4757747788620334226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +182,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038ea74d3b714cd2a03a0ec7f946b6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.IdentifierConverter
+--- !u!114 &6116190557118322995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500311980659525006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8b8541b5e049dd8eed67786b9b34ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.ControlConverter
+--- !u!114 &3070906909227649291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500311980659525006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650005f6fc9647e6b2adf56bd23379c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.SendDataConverter
 --- !u!114 &6301963252231812440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +301,7 @@ MonoBehaviour:
   checkSpereRadius: 0.2
   checkSpereMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   lastChanceJumpTime: 0.15
   intervalJumpTime: 0.2
 --- !u!114 &8148842584438284294
@@ -288,7 +316,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48db4925612f4dbb9c1f72bde3d81a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.AnimatorConverter
-  animator: {fileID: 5585877807821241491}
+  animator: {fileID: 1254655707669221088}
+--- !u!114 &5660760831503281948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500311980659525006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af8cde095e754d0d83dfeef0bbe57a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.CrouchConverter
+  crouchRoot: {fileID: 3054918280440933081}
+  crouchPosY: -0.2
 --- !u!1001 &6788416951976725875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -400,6 +442,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &3054918280440933081 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8381325066274039722, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
+  m_PrefabInstance: {fileID: 6788416951976725875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7061258929562203469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4597028247493687358, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}

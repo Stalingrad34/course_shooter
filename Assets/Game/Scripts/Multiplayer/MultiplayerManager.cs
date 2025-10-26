@@ -26,7 +26,11 @@ namespace Game.Scripts.Multiplayer
 
     public async UniTaskVoid Connect()
     {
-      _room = await Instance.client.JoinOrCreate<State>("state_handler").AsUniTask();
+      var data = new Dictionary<string, object>()
+      {
+        {"speed", 2}
+      };
+      _room = await Instance.client.JoinOrCreate<State>("state_handler", data).AsUniTask();
       
       _room.OnStateChange += OnChange;
       _room.State.players.OnAdd += OnPlayerAdd;
