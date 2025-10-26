@@ -2,7 +2,6 @@
 using Game.Scripts.Gameplay.ECS.Spawn.Components;
 using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Multiplayer;
-using Game.Scripts.Multiplayer.Generated;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,10 +25,18 @@ namespace Game.Scripts.Infrastructure.States
 
     private void OnPlayerConnected(string key, Player player)
     {
-      ref var spawnEvent = ref WorldHandler.GetWorld().NewEntity().Get<SpawnUnitEvent>();
-      spawnEvent.Id = key;
-      spawnEvent.Position = new Vector3(player.x, 0,  player.y);
-      spawnEvent.IsPlayer = _multiplayer.IsPlayer(key);
+      if (_multiplayer.IsPlayer(key))
+      {
+        ref var spawnEvent = ref WorldHandler.GetWorld().NewEntity().Get<SpawnPlayerEvent>();
+        spawnEvent.Id = key;
+        spawnEvent.Position = new Vector3(player.pX, player.pY, player.pZ);
+      }
+      else
+      {
+        ref var spawnEvent = ref WorldHandler.GetWorld().NewEntity().Get<SpawnEnemyEvent>();
+        spawnEvent.Id = key;
+        spawnEvent.Position = new Vector3(player.pX, player.pY, player.pZ);
+      }
     }
 
     private void OnPlayerDisconnected(string key, Player player)

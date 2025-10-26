@@ -461,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3244e3048ad34cafa2e2d8fb42ad55df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.ECS.ECSRunner
+  mainCamera: {fileID: 330585545}
 --- !u!4 &860962529
 Transform:
   m_ObjectHideFlags: 0

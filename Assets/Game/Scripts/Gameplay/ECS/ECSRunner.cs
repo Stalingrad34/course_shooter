@@ -2,7 +2,12 @@
 using Core.Scripts.Loggers;
 using Game.Scripts.Gameplay.ECS.Common;
 using Game.Scripts.Gameplay.ECS.Input;
-using Game.Scripts.Gameplay.ECS.Move;
+using Game.Scripts.Gameplay.ECS.Jump;
+using Game.Scripts.Gameplay.ECS.MouseRotate;
+using Game.Scripts.Gameplay.ECS.MoveTowards;
+using Game.Scripts.Gameplay.ECS.PlayerChange;
+using Game.Scripts.Gameplay.ECS.Rigidbody;
+using Game.Scripts.Gameplay.ECS.SendMessage;
 using Game.Scripts.Gameplay.ECS.Spawn;
 using Leopotam.Ecs;
 using Leopotam.Ecs.UnityIntegration;
@@ -13,6 +18,8 @@ namespace Game.Scripts.Gameplay.ECS
 {
   public class ECSRunner : MonoBehaviour
   {
+    [SerializeField] private Camera mainCamera;
+    
     private EcsWorld _world;
     private EcsSystems _systems;
     private EcsSystems _physicSystems;
@@ -30,14 +37,21 @@ namespace Game.Scripts.Gameplay.ECS
       _systems = new EcsSystems(_world);
       _systems
         .Add(new InputFeature())
+        .Add(new MouseRotateFeature())
+        .Add(new PlayerChangeFeature())
         .Add(new SpawnFeature())
-        .Add(new MoveFeature())
-        .OneFrame<PlayerChangeEvent>()
+        .Add(new MoveTowardsFeature())
+        .Add(new JumpFeature())
+        .Add(new SendMessageFeature())
+        .OneFrame<OnCollisionStayEvent>()
+        .OneFrame<OnCollisionExitEvent>()
+        .Inject(mainCamera)
         .ConvertScene()
         .Init();
 
       _physicSystems = new EcsSystems(_world);
       _physicSystems
+        .Add(new RigidbodyFeature())
         .Init();
 
 #if UNITY_EDITOR

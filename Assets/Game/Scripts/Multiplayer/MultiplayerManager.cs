@@ -4,8 +4,6 @@ using Colyseus;
 using Cysharp.Threading.Tasks;
 using Game.Scripts.Infrastructure;
 using Game.Scripts.Infrastructure.Services;
-using Game.Scripts.Multiplayer.Generated;
-using UnityEngine;
 
 namespace Game.Scripts.Multiplayer
 {
