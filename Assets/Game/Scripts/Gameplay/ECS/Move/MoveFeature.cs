@@ -15,7 +15,8 @@ namespace Game.Scripts.Gameplay.ECS.Move
         .Add(new ChangesMoveSystem())
         .Add(new AxisMoveVelocitySystem())
         .Add(new MoveTowardsSystem())
-        .Add(new MoveAnimationSystem())
+        .Add(new MoveVelocityAnimationSystem())
+        .Add(new MoveTowardsAnimationSystem())
         .Init();
     }
 

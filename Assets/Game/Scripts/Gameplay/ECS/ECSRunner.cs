@@ -10,6 +10,7 @@ using Game.Scripts.Gameplay.ECS.Move;
 using Game.Scripts.Gameplay.ECS.Rigidbody;
 using Game.Scripts.Gameplay.ECS.SendMessage;
 using Game.Scripts.Gameplay.ECS.Spawn;
+using Game.Scripts.Gameplay.ECS.Weapon;
 using Leopotam.Ecs;
 using Leopotam.Ecs.UnityIntegration;
 using UnityEngine;
@@ -43,6 +44,7 @@ namespace Game.Scripts.Gameplay.ECS
         .Add(new CrouchFeature())
         .Add(new MoveFeature())
         .Add(new JumpFeature())
+        .Add(new WeaponFeature())
         .Add(new SendMessageFeature())
         .OneFrame<PlayerChangeEvent>()
         .OneFrame<OnCollisionStayEvent>()

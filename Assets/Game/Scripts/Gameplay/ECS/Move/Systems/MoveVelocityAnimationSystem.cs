@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Gameplay.ECS.Move.Systems
 {
-  public class MoveAnimationSystem : IEcsRunSystem
+  public class MoveVelocityAnimationSystem : IEcsRunSystem
   {
     private EcsFilter<TransformComponent, MoveVelocityComponent, AnimatorComponent> _filter;
     

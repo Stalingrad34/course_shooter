@@ -11,11 +11,13 @@ namespace Game.Scripts.Gameplay.ECS.Input.Systems
     {
       var mouseX = UnityEngine.Input.GetAxis("Mouse X");
       var mouseY = UnityEngine.Input.GetAxis("Mouse Y");
+      var isLeftClick = UnityEngine.Input.GetMouseButton(0);
       
       foreach (var i in _filter)
       {
         _filter.Get1(i).MouseHorizontal = mouseX;
         _filter.Get1(i).MouseVertical = mouseY;
+        _filter.Get1(i).MouseLeftClicked = isLeftClick;
       }
     }
   }

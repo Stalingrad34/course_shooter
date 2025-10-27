@@ -12,9 +12,7 @@ namespace Game.Scripts.Gameplay.ECS.Rigidbody.Systems
     {
       foreach (var i in _moveableFilter)
       {
-        var velocity = _moveableFilter.Get2(i).Velocity;
-        velocity.y = _moveableFilter.Get1(i).Rigidbody.linearVelocity.y;
-        _moveableFilter.Get1(i).Rigidbody.linearVelocity = velocity;
+        _moveableFilter.Get1(i).Rigidbody.linearVelocity = _moveableFilter.Get2(i).Velocity;
       }
     }
   }

@@ -6,6 +6,7 @@
     public float VerticalAxis;
     public float MouseHorizontal;
     public float MouseVertical;
+    public bool MouseLeftClicked;
     public bool SpaceKeyDown;
     public bool CtrlKeyDown;
   }

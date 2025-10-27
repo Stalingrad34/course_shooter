@@ -4,6 +4,7 @@ using Colyseus;
 using Cysharp.Threading.Tasks;
 using Game.Scripts.Infrastructure;
 using Game.Scripts.Infrastructure.Services;
+using Newtonsoft.Json;
 
 namespace Game.Scripts.Multiplayer
 {
@@ -11,8 +12,9 @@ namespace Game.Scripts.Multiplayer
   {
     public event Action<string, Player> OnPlayerConnected;
     public event Action<string, Player> OnPlayerDisconnected;
+    public event Action<ShootInfo> OnShootMessageReceived;
     
-    private List<PlayerChangesHandler> _changesHandlers = new ();
+    private readonly Dictionary<string, PlayerChangesHandler> _changesHandlers = new();
     private ColyseusRoom<State> _room;
     
     public void Init()
@@ -36,6 +38,7 @@ namespace Game.Scripts.Multiplayer
       _room.State.players.OnAdd += OnPlayerAdd;
       _room.State.players.OnRemove += OnPlayerRemove;
       _room.State.players.ForEach(OnPlayerAdd);
+      _room.OnMessage<string>("Shoot", OnShootMessage);
     }
     
     public void Disconnect()
@@ -60,12 +63,13 @@ namespace Game.Scripts.Multiplayer
     {
       var handler = new PlayerChangesHandler(key);
       player.OnChange += handler.OnPlayerChanged;
-      _changesHandlers.Add(handler);
+      _changesHandlers.Add(key, handler);
       OnPlayerConnected?.Invoke(key, player);
     }
     
     private void OnPlayerRemove(string key, Player player)
     {
+      _changesHandlers.Remove(key);
       OnPlayerDisconnected?.Invoke(key, player);
     }
 
@@ -74,9 +78,27 @@ namespace Game.Scripts.Multiplayer
       
     }
 
+    private void OnShootMessage(string message)
+    {
+      var shootInfo = JsonConvert.DeserializeObject<ShootInfo>(message);
+      OnShootMessageReceived?.Invoke(shootInfo);
+    }
+
     public void SendMessage(string key, Dictionary<string, object> data)
     {
       _room.Send(key, data);
+    }
+    
+    public void SendMessage(string key, string data)
+    {
+      _room.Send(key, data);
+    }
+
+    public void SendShootMessage(ShootInfo shootInfo)
+    {
+      shootInfo.key = _room.SessionId;
+      var json = JsonConvert.SerializeObject(shootInfo);
+      SendMessage("shoot", json);
     }
   }
 }

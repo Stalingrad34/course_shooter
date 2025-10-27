@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Game.Scripts.Gameplay.ECS.Spawn.Components;
+using Game.Scripts.Gameplay.ECS.Weapon.Components;
 using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Multiplayer;
 using Leopotam.Ecs;
@@ -20,6 +21,7 @@ namespace Game.Scripts.Infrastructure.States
       _multiplayer = ServiceProvider.Get<MultiplayerManager>();
       _multiplayer.OnPlayerConnected += OnPlayerConnected;
       _multiplayer.OnPlayerDisconnected += OnPlayerDisconnected;
+      _multiplayer.OnShootMessageReceived += OnShootMessageReceived;
       _multiplayer.Connect().Forget();
     }
 
@@ -45,10 +47,16 @@ namespace Game.Scripts.Infrastructure.States
       
     }
 
+    private void OnShootMessageReceived(ShootInfo shootInfo)
+    {
+      WorldHandler.GetWorld().NewEntity().Get<MessageShootEvent>().ShootInfo = shootInfo;
+    }
+
     public void Exit()
     {
       _multiplayer.OnPlayerConnected -= OnPlayerConnected;
       _multiplayer.OnPlayerDisconnected -= OnPlayerDisconnected;
+      _multiplayer.OnShootMessageReceived -= OnShootMessageReceived;
       _multiplayer.Disconnect();
     }
   }
