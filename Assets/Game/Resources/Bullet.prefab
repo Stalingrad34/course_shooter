@@ -276,6 +276,9 @@ GameObject:
   - component: {fileID: 9045572394858888785}
   - component: {fileID: 138979586418831679}
   - component: {fileID: 8558322810453199589}
+  - component: {fileID: 23466853732301884}
+  - component: {fileID: 2158963552145377681}
+  - component: {fileID: 3150396046118605784}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -312,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cdf8a0bfb64659935124663f3efb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.Data.Bullet.BulletView
+  entityConverter: {fileID: 9045572394858888785}
 --- !u!54 &7480346328413787895
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -351,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863c7f7460b2b49abb4fa9a7ff9cb180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Leopotam.Ecs::Voody.UniLeo.ConvertToEntity
-  convertMode: 0
+  convertMode: 2
 --- !u!114 &138979586418831679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,3 +382,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.RigidbodyConverter
   rb: {fileID: 7480346328413787895}
+--- !u!114 &23466853732301884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859889618507283415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb31aa01f79d4ab387b3897c3fe45646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.CollisionDamageConverter
+  damage: 10
+--- !u!114 &2158963552145377681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859889618507283415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0e9d940b2c4a8fbc2532525eccca09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.CollisionDestroyConverter
+--- !u!114 &3150396046118605784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859889618507283415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db2877ffeae41fd88fb68b510ae3225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.TransformConverter

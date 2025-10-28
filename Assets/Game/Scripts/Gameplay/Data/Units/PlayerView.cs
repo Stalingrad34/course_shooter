@@ -8,7 +8,6 @@ namespace Game.Scripts.Gameplay.Data.Units
 {
   public class PlayerView : UnitView
   {
-    [SerializeField] private ConvertToEntity entityConverter;
     [SerializeField] private Transform cameraPoint;
 
     public void SetCameraPoint(Camera mainCamera)

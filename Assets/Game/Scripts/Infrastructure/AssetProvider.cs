@@ -34,6 +34,11 @@ namespace Game.Scripts.Infrastructure
             return GetResource<MultiplayerManager>($"{nameof(MultiplayerManager)}");
         }
         
+        public static PlayerData GetPlayerData()
+        {
+            return GetResource<PlayerData>($"{nameof(PlayerData)}");
+        }
+        
         public static T GetPopup<T, U>() where T : PopupView<U> where U : PopupModel
         {
             if (Assets.ContainsKey(typeof(T)))

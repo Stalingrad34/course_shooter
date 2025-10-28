@@ -6,5 +6,6 @@ namespace Game.Scripts.Gameplay.ECS.Spawn.Components
   {
     public string Id;
     public Vector3 Position;
+    public Player Player;
   }
 }

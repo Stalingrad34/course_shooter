@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Colyseus;
 using Cysharp.Threading.Tasks;
+using Game.Scripts.Gameplay.Data.Units;
 using Game.Scripts.Infrastructure;
 using Game.Scripts.Infrastructure.Services;
 using Newtonsoft.Json;
@@ -26,11 +27,12 @@ namespace Game.Scripts.Multiplayer
 #endif
     }
 
-    public async UniTaskVoid Connect()
+    public async UniTaskVoid Connect(PlayerData playerData)
     {
       var data = new Dictionary<string, object>()
       {
-        {"speed", 2}
+        {"speed", playerData.Speed},
+        {"health", playerData.Health},
       };
       _room = await Instance.client.JoinOrCreate<State>("state_handler", data).AsUniTask();
       

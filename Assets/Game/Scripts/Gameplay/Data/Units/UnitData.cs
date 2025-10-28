@@ -3,5 +3,7 @@
   public class UnitData
   {
     public string Id;
+    public float Speed;
+    public int Health;
   }
 }

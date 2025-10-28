@@ -22,7 +22,7 @@ namespace Game.Scripts.Infrastructure.States
       _multiplayer.OnPlayerConnected += OnPlayerConnected;
       _multiplayer.OnPlayerDisconnected += OnPlayerDisconnected;
       _multiplayer.OnShootMessageReceived += OnShootMessageReceived;
-      _multiplayer.Connect().Forget();
+      _multiplayer.Connect(AssetProvider.GetPlayerData()).Forget();
     }
 
     private void OnPlayerConnected(string key, Player player)
@@ -32,6 +32,7 @@ namespace Game.Scripts.Infrastructure.States
         ref var spawnEvent = ref WorldHandler.GetWorld().NewEntity().Get<SpawnPlayerEvent>();
         spawnEvent.Id = key;
         spawnEvent.Position = new Vector3(player.pX, player.pY, player.pZ);
+        spawnEvent.Player = player;
       }
       else
       {

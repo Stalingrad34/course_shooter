@@ -3,6 +3,10 @@ using Core.Scripts.Loggers;
 using Game.Scripts.Gameplay.ECS.Common;
 using Game.Scripts.Gameplay.ECS.Crouch;
 using Game.Scripts.Gameplay.ECS.Crouch.Systems;
+using Game.Scripts.Gameplay.ECS.Damage;
+using Game.Scripts.Gameplay.ECS.Damage.Components;
+using Game.Scripts.Gameplay.ECS.Destroy;
+using Game.Scripts.Gameplay.ECS.Health;
 using Game.Scripts.Gameplay.ECS.Input;
 using Game.Scripts.Gameplay.ECS.Jump;
 using Game.Scripts.Gameplay.ECS.MouseRotate;
@@ -45,8 +49,13 @@ namespace Game.Scripts.Gameplay.ECS
         .Add(new MoveFeature())
         .Add(new JumpFeature())
         .Add(new WeaponFeature())
+        .Add(new DamageFeature())
+        .Add(new HealthFeature())
         .Add(new SendMessageFeature())
+        .Add(new DestroyFeature())
         .OneFrame<PlayerChangeEvent>()
+        .OneFrame<DamageEvent>()
+        .OneFrame<OnCollisionEnterEvent>()
         .OneFrame<OnCollisionStayEvent>()
         .OneFrame<OnCollisionExitEvent>()
         .Inject(mainCamera)
