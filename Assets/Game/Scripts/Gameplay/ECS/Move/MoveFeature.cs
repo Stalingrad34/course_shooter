@@ -17,6 +17,8 @@ namespace Game.Scripts.Gameplay.ECS.Move
         .Add(new MoveTowardsSystem())
         .Add(new MoveVelocityAnimationSystem())
         .Add(new MoveTowardsAnimationSystem())
+        .Add(new RestartVelocitySystem())
+        .Add(new RestartTowardsSystem())
         .Init();
     }
 

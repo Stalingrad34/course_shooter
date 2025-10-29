@@ -17,7 +17,7 @@ namespace Game.Scripts.Gameplay.ECS.Move.Systems
         var destination = _moveableFilter.Get2(i).Destination;
         var velocityMagnitude = _moveableFilter.Get2(i).Velocity.magnitude;
 
-        if (Mathf.Approximately(velocityMagnitude, 0f))
+        if (velocityMagnitude < 0.05f)
         {
           transform.position = destination;
         }

@@ -14,6 +14,7 @@ namespace Game.Scripts.Multiplayer
     public event Action<string, Player> OnPlayerConnected;
     public event Action<string, Player> OnPlayerDisconnected;
     public event Action<ShootInfo> OnShootMessageReceived;
+    public event Action<RestartInfo> OnRestartMessageReceived;
     
     private readonly Dictionary<string, PlayerChangesHandler> _changesHandlers = new();
     private ColyseusRoom<State> _room;
@@ -41,8 +42,9 @@ namespace Game.Scripts.Multiplayer
       _room.State.players.OnRemove += OnPlayerRemove;
       _room.State.players.ForEach(OnPlayerAdd);
       _room.OnMessage<string>("Shoot", OnShootMessage);
+      _room.OnMessage<string>("Restart", OnRestartMessage);
     }
-    
+
     public void Disconnect()
     {
       if (_room == null)
@@ -84,6 +86,12 @@ namespace Game.Scripts.Multiplayer
     {
       var shootInfo = JsonConvert.DeserializeObject<ShootInfo>(message);
       OnShootMessageReceived?.Invoke(shootInfo);
+    }
+    
+    private void OnRestartMessage(string message)
+    {
+      var restartInfo = JsonConvert.DeserializeObject<RestartInfo>(message);
+      OnRestartMessageReceived?.Invoke(restartInfo);
     }
 
     public void SendMessage(string key, Dictionary<string, object> data)

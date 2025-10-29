@@ -1,6 +1,7 @@
 ﻿using Game.Scripts.Gameplay.ECS.Common;
 using Game.Scripts.Gameplay.ECS.Health.Components;
 using Leopotam.Ecs;
+using UnityEngine;
 
 namespace Game.Scripts.Gameplay.ECS.Health.Systems
 {
@@ -23,7 +24,7 @@ namespace Game.Scripts.Gameplay.ECS.Health.Systems
             switch (change.Field)
             {
               case "currentHealth":
-                _filter.Get2(ii).CurrentHealth -= (ushort) change.Value;
+                _filter.Get2(ii).CurrentHealth = (ushort) change.Value;
                 break;
             }
           }

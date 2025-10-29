@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using Game.Scripts.Gameplay.ECS.Common;
 using Game.Scripts.Gameplay.ECS.Spawn.Components;
 using Game.Scripts.Gameplay.ECS.Weapon.Components;
 using Game.Scripts.Infrastructure.Services;
@@ -22,6 +23,7 @@ namespace Game.Scripts.Infrastructure.States
       _multiplayer.OnPlayerConnected += OnPlayerConnected;
       _multiplayer.OnPlayerDisconnected += OnPlayerDisconnected;
       _multiplayer.OnShootMessageReceived += OnShootMessageReceived;
+      _multiplayer.OnRestartMessageReceived += OnRestartMessageReceived;
       _multiplayer.Connect(AssetProvider.GetPlayerData()).Forget();
     }
 
@@ -53,11 +55,17 @@ namespace Game.Scripts.Infrastructure.States
       WorldHandler.GetWorld().NewEntity().Get<MessageShootEvent>().ShootInfo = shootInfo;
     }
 
+    private void OnRestartMessageReceived(RestartInfo restartInfo)
+    {
+      WorldHandler.GetWorld().NewEntity().Get<RestartEvent>().RestartInfo = restartInfo;
+    }
+
     public void Exit()
     {
       _multiplayer.OnPlayerConnected -= OnPlayerConnected;
       _multiplayer.OnPlayerDisconnected -= OnPlayerDisconnected;
       _multiplayer.OnShootMessageReceived -= OnShootMessageReceived;
+      _multiplayer.OnRestartMessageReceived -= OnRestartMessageReceived;
       _multiplayer.Disconnect();
     }
   }

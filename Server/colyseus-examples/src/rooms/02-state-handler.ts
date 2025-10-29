@@ -3,6 +3,9 @@ import { Schema, type, MapSchema } from "@colyseus/schema";
 
 export class Player extends Schema {
     @type("uint16")
+    loss = 0;
+
+    @type("uint16")
     health = 0;
 
     @type("uint16")
@@ -89,8 +92,28 @@ export class StateHandlerRoom extends Room<State> {
         });
 
         this.onMessage("damage", (client, data) => {
-            const player = this.state.players.get(data.id);
-            player.currentHealth -= data.value;
+            const id = data.id;
+            const player = this.state.players.get(id);
+            let hp = player.currentHealth - data.value;
+
+            if (hp > 0) {
+                player.currentHealth = hp;
+                return;
+            }
+            
+            const x = Math.floor(Math.random() * 50) - 25;
+            const z = Math.floor(Math.random() * 50) - 25;
+
+            player.loss++;
+            player.currentHealth = player.health;
+
+            for(const client of this.clients){
+                if (client.id !== id)
+                    continue;
+
+                const message = JSON.stringify({x, z, id});
+                client.send("Restart", message);
+            }
         });
     }
 

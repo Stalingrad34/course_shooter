@@ -55,6 +55,7 @@ namespace Game.Scripts.Gameplay.ECS
         .Add(new DestroyFeature())
         .OneFrame<PlayerChangeEvent>()
         .OneFrame<DamageEvent>()
+        .OneFrame<RestartEvent>()
         .OneFrame<OnCollisionEnterEvent>()
         .OneFrame<OnCollisionStayEvent>()
         .OneFrame<OnCollisionExitEvent>()
