@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Gameplay.Data.Bullet;
+﻿using System.Collections.Generic;
+using Game.Scripts.Gameplay.Data.Bullet;
 using Game.Scripts.Gameplay.ECS.Weapon.Components;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Game.Scripts.Gameplay.ECS.Converters
     [SerializeField] private Transform shootPoint;
     [SerializeField] private Animator animator;
     [SerializeField] private float shootDelay;
+    [SerializeField] private List<GameObject> weapons;
     
     public void Convert(EcsEntity entity)
     {
@@ -21,6 +23,7 @@ namespace Game.Scripts.Gameplay.ECS.Converters
       component.Animator = animator;
       component.ShootDelay = shootDelay;
       component.ShootTimer = shootDelay;
+      component.Weapons = weapons;
     }
   }
 }

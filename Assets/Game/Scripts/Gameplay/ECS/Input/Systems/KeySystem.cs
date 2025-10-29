@@ -14,6 +14,8 @@ namespace Game.Scripts.Gameplay.ECS.Input.Systems
       {
         _filter.Get1(i).SpaceKeyDown = UnityEngine.Input.GetKeyDown(KeyCode.Space);
         _filter.Get1(i).CtrlKeyDown = UnityEngine.Input.GetKey(KeyCode.LeftControl);
+        _filter.Get1(i).Alpha1KeyDown = UnityEngine.Input.GetKey(KeyCode.Alpha1);
+        _filter.Get1(i).Alpha2KeyDown = UnityEngine.Input.GetKey(KeyCode.Alpha2);
       }
     }
   }

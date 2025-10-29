@@ -13,10 +13,12 @@ namespace Game.Scripts.Gameplay.ECS.Weapon
     {
       _systems = new EcsSystems(_world);
       _systems
+        .Add(new ChangesSwitchWeaponSystem())
         .Add(new MessageShootSystem())
         .Add(new ShootDelaySystem())
         .Add(new MouseShootSystem())
         .Add(new SpawnBulletSystem())
+        .Add(new SwitchWeaponSystem())
         .OneFrame<SpawnBulletEvent>()
         .OneFrame<MessageShootEvent>()
         .Init();

@@ -22,7 +22,7 @@ namespace Game.Scripts.Gameplay.ECS.Crouch.Systems
           {
             if (change.Field.Equals("cr"))
             {
-              _serverPlayers.Get3(i).IsCrouch = (bool) change.Value;
+              _serverPlayers.Get3(ii).IsCrouch = (bool) change.Value;
             }
           }
         }

@@ -20,6 +20,7 @@ namespace Game.Scripts.Gameplay.ECS.Spawn.Systems
           Id = _eventFilter.Get1(i).Id,
           Speed = _eventFilter.Get1(i).Player.speed,
           Health = _eventFilter.Get1(i).Player.health,
+          WeaponType = (WeaponType)_eventFilter.Get1(i).Player.weapon
         };
         
         var unitView = AssetProvider.GetPlayerView();

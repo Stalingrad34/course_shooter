@@ -34,6 +34,7 @@ namespace Game.Scripts.Multiplayer
       {
         {"speed", playerData.Speed},
         {"health", playerData.Health},
+        {"weapon", (ushort)playerData.WeaponType},
       };
       _room = await Instance.client.JoinOrCreate<State>("state_handler", data).AsUniTask();
       

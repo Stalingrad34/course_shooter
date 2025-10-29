@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Gameplay.Data.Bullet;
+﻿using System.Collections.Generic;
+using Game.Scripts.Gameplay.Data.Bullet;
 using UnityEngine;
 
 namespace Game.Scripts.Gameplay.ECS.Weapon.Components
@@ -11,5 +12,6 @@ namespace Game.Scripts.Gameplay.ECS.Weapon.Components
     public float ShootDelay;
     public float ShootTimer;
     public bool CanShoot;
+    public List<GameObject> Weapons;
   }
 }

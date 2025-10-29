@@ -5,5 +5,6 @@
     public string Id;
     public float Speed;
     public int Health;
+    public WeaponType WeaponType;
   }
 }
