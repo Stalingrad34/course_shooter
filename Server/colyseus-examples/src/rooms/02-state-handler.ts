@@ -5,6 +5,9 @@ export class Player extends Schema {
     @type("uint16")
     health = 0;
 
+    @type("uint16")
+    currentHealth = 0;
+
     @type("number")
     speed = 0;
     
@@ -46,6 +49,7 @@ export class State extends Schema {
         const player = new Player();
         player.speed = data.speed;
         player.health = data.health;
+        player.currentHealth = data.health;
 
         this.players.set(sessionId, player);
     }
@@ -82,6 +86,11 @@ export class StateHandlerRoom extends Room<State> {
 
         this.onMessage("shoot", (client, data) => {
             this.broadcast("Shoot", data, {except: client});
+        });
+
+        this.onMessage("damage", (client, data) => {
+            const player = this.state.players.get(data.id);
+            player.currentHealth -= data.value;
         });
     }
 

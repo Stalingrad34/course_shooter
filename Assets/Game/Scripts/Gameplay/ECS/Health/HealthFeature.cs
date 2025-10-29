@@ -1,5 +1,6 @@
 ﻿using Game.Scripts.Gameplay.ECS.Health.Systems;
 using Leopotam.Ecs;
+using UnityEngine;
 
 namespace Game.Scripts.Gameplay.ECS.Health
 {
@@ -7,14 +8,17 @@ namespace Game.Scripts.Gameplay.ECS.Health
   {
     private EcsWorld _world;
     private EcsSystems _systems;
+    private Camera _mainCamera;
 
     public void Init()
     {
       _systems = new EcsSystems(_world);
       _systems
+        .Add(new ChangesHealthSystem())
         .Add(new HealthDamageSystem())
         .Add(new HealthHUDSystem())
         .Add(new HealthDeadSystem())
+        .Inject(_mainCamera)
         .Init();
     }
 

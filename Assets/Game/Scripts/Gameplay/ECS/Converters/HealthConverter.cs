@@ -10,6 +10,7 @@ namespace Game.Scripts.Gameplay.ECS.Converters
   public class HealthConverter : MonoBehaviour, IUnitSetup, IConvertToEntity
   {
     [SerializeField] private Image progressBar;
+    [SerializeField] private bool lookAt;
     private int _health;
     
     public void Convert(EcsEntity entity)
@@ -18,6 +19,7 @@ namespace Game.Scripts.Gameplay.ECS.Converters
       health.CurrentHealth = _health;
       health.MaxHealth = _health;
       health.ProgressBar = progressBar;
+      health.LookAt = lookAt;
     }
 
     public void Setup(UnitData data)

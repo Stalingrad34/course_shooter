@@ -7,5 +7,6 @@ namespace Game.Scripts.Gameplay.ECS.Health.Components
     public int MaxHealth;
     public int CurrentHealth;
     public Image ProgressBar;
+    public bool LookAt;
   }
 }

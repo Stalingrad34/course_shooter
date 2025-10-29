@@ -336,6 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.HealthConverter
   progressBar: {fileID: 6812300588667115585}
+  lookAt: 1
 --- !u!1 &6829828686125680176
 GameObject:
   m_ObjectHideFlags: 0

@@ -102,5 +102,16 @@ namespace Game.Scripts.Multiplayer
       var json = JsonConvert.SerializeObject(shootInfo);
       SendMessage("shoot", json);
     }
+    
+    public void SendDamageMessage(string key, int damage)
+    {
+      var data = new Dictionary<string, object>()
+      {
+        {"id", key},
+        {"value", damage}
+      };
+      
+      SendMessage("damage", data);
+    }
   }
 }
