@@ -24,8 +24,17 @@ namespace Game.Scripts.Gameplay.Data.Bullet
       if (entity.HasValue)
       {
         ref var collisionEvent = ref entity.Value.Get<OnCollisionEnterEvent>();
-        collisionEvent.Collision = collision;
         collisionEvent.GameObject = collision.gameObject;
+      }
+    }
+    
+    private void OnTriggerEnter(Collider hit)
+    {
+      var entity = entityConverter.TryGetEntity();
+      if (entity.HasValue)
+      {
+        ref var collisionEvent = ref entity.Value.Get<OnCollisionEnterEvent>();
+        collisionEvent.GameObject = hit.gameObject;
       }
     }
   }
